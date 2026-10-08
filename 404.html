@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"><title>Redirecting…</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<script>
+  // リポジトリ名に合わせて変更（例: https://user.github.io/my-hub/ なら '/my-hub/'）
+  // ユーザーサイト（user.github.io 直下）の場合は '/' にしてください
+  var BASE = '/REPO/';
+  var p = location.pathname;
+  var route = p.indexOf(BASE) === 0 ? p.slice(BASE.length) : p.replace(/^\//, '');
+  route = route.replace(/\/$/, '').replace(/\.html?$/, '');
+  location.replace(BASE + '#/' + (route || 'home'));
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+:root{--bg:#eef0fb;--fg:#1b1d2a;--muted:#5b5f78;--accent:#6d5cff;--accent2:#14b8d4;--glass:rgba(255,255,255,.45);--line:rgba(255,255,255,.7);--shadow:0 10px 30px rgba(40,40,90,.15)}
+@media (prefers-color-scheme:dark){:root{--bg:#0b0d1a;--fg:#eef0ff;--muted:#a3a8c7;--accent:#8b7bff;--accent2:#2de2ff;--glass:rgba(255,255,255,.08);--line:rgba(255,255,255,.18);--shadow:0 10px 40px rgba(0,0,0,.45)}}
+*{box-sizing:border-box;margin:0}
+body{font-family:system-ui,-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;color:var(--fg);background:var(--bg);min-height:100vh;overflow-x:hidden;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.blob{position:fixed;border-radius:50%;filter:blur(80px);opacity:.5;z-index:-1;animation:float 18s ease-in-out infinite alternate}
+.b1{width:420px;height:420px;background:var(--accent);top:-120px;left:-100px}
+.b2{width:380px;height:380px;background:var(--accent2);bottom:-120px;right:-80px;animation-delay:-6s}
+.b3{width:300px;height:300px;background:#f472b6;top:40%;left:50%;animation-delay:-11s;opacity:.3}
+@keyframes float{to{transform:translate(60px,40px) scale(1.12)}}
+@keyframes rise{from{opacity:0;transform:translateY(16px) scale(.98)}to{opacity:1;transform:none}}
+.glass{background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);border-radius:22px;box-shadow:var(--shadow);padding:20px;animation:rise .6s cubic-bezier(.2,.8,.2,1) backwards;transition:transform .25s}
+.glass:hover{transform:translateY(-3px)}
+header.glass{position:sticky;top:12px;margin:12px auto 0;max-width:1100px;width:calc(100% - 24px);z-index:10;display:flex;align-items:center;gap:12px;padding:10px 14px;flex-wrap:wrap;border-radius:999px;animation:none}
+header.glass:hover{transform:none}
+.brand{font-weight:800;margin-right:auto;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent;font-size:18px}
+nav{display:flex;gap:4px;flex-wrap:wrap}
+nav a{color:var(--fg);text-decoration:none;padding:8px 12px;border-radius:999px;font-size:14px;transition:.2s}
+nav a:hover,nav a.on{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff}
+main{max-width:1100px;margin:0 auto;padding:16px 16px 60px;display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+.wide{grid-column:1/-1}
+h2{font-size:18px;margin-bottom:12px}
+.big{font-size:clamp(36px,8vw,68px);font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-1px}
+.muted{color:var(--muted);font-size:14px}
+.err{color:#f87171}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+input,select,textarea,button{font:inherit;color:var(--fg)}
+input,select,textarea{background:rgba(127,127,160,.12);border:1px solid var(--line);border-radius:12px;padding:10px 12px;width:100%;transition:box-shadow .2s}
+input:focus,select:focus,textarea:focus{outline:none;box-shadow:0 0 0 3px rgba(109,92,255,.35)}
+button{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:0;border-radius:12px;padding:10px 16px;cursor:pointer;transition:transform .15s,filter .2s;white-space:nowrap}
+button:hover{filter:brightness(1.1)}
+button:active{transform:scale(.96)}
+.ghost{background:rgba(127,127,160,.25)}
+.grid-items{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}
+.item{border-radius:16px;overflow:hidden;background:rgba(127,127,160,.1);border:1px solid var(--line);text-decoration:none;color:var(--fg);transition:transform .25s,box-shadow .25s;display:block}
+.item:hover{transform:translateY(-4px) scale(1.02);box-shadow:var(--shadow)}
+.item img{width:100%;display:block}
+.item>div{padding:10px}
+.disc{background:#22c55e;color:#fff;border-radius:6px;padding:1px 6px;font-size:12px;font-weight:700}
+.days{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:8px;margin-top:14px}
+.day{text-align:center;padding:10px 6px;border-radius:14px;background:rgba(127,127,160,.1);animation:rise .5s backwards}
+.fade-in{animation:rise .5s backwards}
+.done{color:#22c55e}
+@media (max-width:600px){header.glass{border-radius:20px}.glass{padding:16px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
